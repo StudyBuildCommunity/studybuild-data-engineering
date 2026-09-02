@@ -23,6 +23,10 @@ database/*.db
 database/*.sqlite
 database/*.sqlite3
 
+# Raw source datasets
+data/raw/*.xlsx
+data/raw/*.xls
+
 # Logs
 logs/*
 !logs/.gitkeep
