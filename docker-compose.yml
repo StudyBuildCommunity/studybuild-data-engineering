@@ -7,4 +7,4 @@ services:
     working_dir: /app
     volumes:
       - .:/app
-    command: python inspect_dataset.py
+    command: python src/data_generation/generate_raw_data.py
