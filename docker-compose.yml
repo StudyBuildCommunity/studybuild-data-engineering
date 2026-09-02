@@ -1,0 +1,7 @@
+services:
+  etl:
+    build: .
+    container_name: fmcg-inventory-etl
+    volumes:
+      - .:/app
+    working_dir: /app
