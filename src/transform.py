@@ -181,7 +181,7 @@ def transform_all(
 
 
 if __name__ == "__main__":
-    from extract import extract_all
+    from src.extract import extract_all
 
     datasets = extract_all()
     transformed = transform_all(datasets)

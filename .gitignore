@@ -31,9 +31,6 @@ data/raw/*.xls
 logs/*
 !logs/.gitkeep
 
-# Generated figures
-figures/*
-
 # OS files
 .DS_Store
 Thumbs.db

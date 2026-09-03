@@ -23,6 +23,7 @@ TABLES = {
     "integrated_sales": "integrated_sales.csv",
     "integrated_orders": "integrated_orders.csv",
     "inventory_summary": "inventory_summary.csv",
+    "inventory_business_ready": "inventory_business_ready.csv",
 }
 
 
