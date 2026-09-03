@@ -143,11 +143,9 @@ def create_products(
     """Create a product master dataset from observed SKUs."""
 
     products = (
-        sales_df[
-            ["sku"]
-        ]
-        .dropna()
+        sales_df[["sku"]]
         .drop_duplicates()
+        .assign(sku=lambda df: df["sku"].astype(str))
         .sort_values("sku")
         .reset_index(drop=True)
     )
