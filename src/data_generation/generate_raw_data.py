@@ -113,11 +113,13 @@ def prepare_sales_data(
         size=len(df),
     )
 
+    # Create project-level sales ID.
     df["sale_id"] = [
         f"SALE{i:07d}"
         for i in range(1, len(df) + 1)
     ]
 
+    # Calculate revenue.
     df["revenue"] = (
         df["quantity"] * df["unit_price"]
     ).round(2)
@@ -131,6 +133,34 @@ def prepare_sales_data(
             "quantity",
             "unit_price",
             "revenue",
+        ]
+    ]
+
+
+def create_products(
+    sales_df: pd.DataFrame,
+) -> pd.DataFrame:
+    """Create a product master dataset from observed SKUs."""
+
+    products = (
+        sales_df[
+            ["sku"]
+        ]
+        .dropna()
+        .drop_duplicates()
+        .sort_values("sku")
+        .reset_index(drop=True)
+    )
+
+    products["product_id"] = [
+        f"PROD{i:06d}"
+        for i in range(1, len(products) + 1)
+    ]
+
+    return products[
+        [
+            "product_id",
+            "sku",
         ]
     ]
 
@@ -190,7 +220,11 @@ def create_inventory(
 ) -> pd.DataFrame:
     """Create simulated warehouse inventory snapshots."""
 
-    skus = sales_df["sku"].dropna().unique()
+    skus = (
+        sales_df["sku"]
+        .dropna()
+        .unique()
+    )
 
     records = []
 
@@ -206,6 +240,7 @@ def create_inventory(
     ]
 
     for snapshot_date in snapshot_dates:
+
         selected_skus = rng.choice(
             skus,
             size=min(500, len(skus)),
@@ -213,7 +248,9 @@ def create_inventory(
         )
 
         for sku in selected_skus:
+
             for warehouse_id in warehouse_ids:
+
                 quantity = int(
                     rng.integers(
                         low=0,
@@ -236,6 +273,12 @@ def create_inventory(
 def generate_raw_data() -> None:
     """Generate all raw project data sources."""
 
+    # Make sure the raw directory exists.
+    RAW_DATA_DIR.mkdir(
+        parents=True,
+        exist_ok=True,
+    )
+
     print("Loading UCI source dataset...")
 
     source_df = load_source_data()
@@ -253,6 +296,12 @@ def generate_raw_data() -> None:
     sales_df = prepare_sales_data(
         source_df,
         rng,
+    )
+
+    print("Generating products.csv...")
+
+    products_df = create_products(
+        sales_df
     )
 
     print("Generating warehouses.csv...")
@@ -273,8 +322,14 @@ def generate_raw_data() -> None:
         rng,
     )
 
+    # Save raw datasets.
     sales_df.to_csv(
         RAW_DATA_DIR / "sales.csv",
+        index=False,
+    )
+
+    products_df.to_csv(
+        RAW_DATA_DIR / "products.csv",
         index=False,
     )
 
@@ -294,15 +349,23 @@ def generate_raw_data() -> None:
     )
 
     print("\nGeneration complete.")
+
     print(
         f"Sales rows: {len(sales_df):,}"
     )
+
+    print(
+        f"Product rows: {len(products_df):,}"
+    )
+
     print(
         f"Orders rows: {len(orders_df):,}"
     )
+
     print(
         f"Inventory rows: {len(inventory_df):,}"
     )
+
     print(
         f"Warehouse rows: {len(warehouses_df):,}"
     )
