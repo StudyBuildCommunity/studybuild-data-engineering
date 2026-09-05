@@ -1,6 +1,0 @@
-warehouse_id,warehouse_name,city,region
-WH001,Central Warehouse,London,South East
-WH002,North Warehouse,Manchester,North West
-WH003,Midlands Warehouse,Birmingham,West Midlands
-WH004,Scotland Warehouse,Glasgow,Scotland
-WH005,Wales Warehouse,Cardiff,Wales
