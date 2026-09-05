@@ -1,0 +1,13 @@
+{
+  "name": "fmcg-inventory-etl-reports",
+  "private": true,
+  "description": "Builds the English and Persian (RTL) .docx project reports from reports/quality_summary.json.",
+  "scripts": {
+    "build:en": "node build_report_en.js",
+    "build:fa": "node build_report_fa.js",
+    "build": "npm run build:en && npm run build:fa"
+  },
+  "dependencies": {
+    "docx": "^9.6.1"
+  }
+}

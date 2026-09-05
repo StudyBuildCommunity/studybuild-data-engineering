@@ -1,0 +1,9 @@
+warehouse_id,warehouse_name,city,region
+WH-01,North DC,Tabriz,Northwest
+WH-02,South DC,Shiraz,South
+WH-03,East Hub,Mashhad,Northeast
+WH-04,West Hub,Ahvaz,Southwest
+WH-05,Central DC,Tehran,Central
+WH-06,Coastal Hub,Bandar Abbas,South
+WH-07,Metro DC,Isfahan,Central
+WH-08,Border Hub,Zahedan,Southeast

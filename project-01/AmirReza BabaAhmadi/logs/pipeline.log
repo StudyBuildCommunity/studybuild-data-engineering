@@ -1,0 +1,116 @@
+2026-09-05 15:17:44,452 [INFO] === PIPELINE START ===
+2026-09-05 15:17:44,467 [INFO] EXTRACT sales.csv: read 1877 rows, 6 columns from /root/fmcg-inventory-etl/data/raw/sales.csv
+2026-09-05 15:17:44,469 [INFO] EXTRACT orders.csv: read 767 rows, 6 columns from /root/fmcg-inventory-etl/data/raw/orders.csv
+2026-09-05 15:17:44,476 [INFO] EXTRACT inventory.csv: read 3470 rows, 4 columns from /root/fmcg-inventory-etl/data/raw/inventory.csv
+2026-09-05 15:17:44,477 [INFO] EXTRACT warehouses.csv: read 8 rows, 4 columns from /root/fmcg-inventory-etl/data/raw/warehouses.csv
+2026-09-05 15:17:44,477 [INFO] === PROFILE warehouses ===
+2026-09-05 15:17:44,477 [INFO] rows=8, columns=4
+2026-09-05 15:17:44,477 [INFO] columns: ['warehouse_id', 'warehouse_name', 'city', 'region']
+2026-09-05 15:17:44,479 [INFO] dtypes:
+warehouse_id      str
+warehouse_name    str
+city              str
+region            str
+2026-09-05 15:17:44,480 [INFO] null % per column:
+warehouse_id      0.0
+warehouse_name    0.0
+city              0.0
+region            0.0
+2026-09-05 15:17:44,482 [INFO] exact duplicate rows = 0
+2026-09-05 15:17:44,482 [INFO] duplicate values in key column 'warehouse_id' = 0
+2026-09-05 15:17:44,484 [INFO] === PROFILE sales ===
+2026-09-05 15:17:44,485 [INFO] rows=1877, columns=6
+2026-09-05 15:17:44,485 [INFO] columns: ['TransactionID', 'SaleDate ', ' SKU', 'Warehouse_ID', ' Quantity', 'Revenue']
+2026-09-05 15:17:44,485 [INFO] dtypes:
+TransactionID        str
+SaleDate             str
+ SKU                 str
+Warehouse_ID         str
+ Quantity        float64
+Revenue          float64
+2026-09-05 15:17:44,486 [INFO] null % per column:
+TransactionID    0.00
+SaleDate         5.59
+ SKU             1.28
+Warehouse_ID     0.00
+ Quantity        1.86
+Revenue          0.00
+2026-09-05 15:17:44,488 [INFO] exact duplicate rows = 27
+2026-09-05 15:17:44,489 [INFO] duplicate values in key column 'TransactionID' = 27
+2026-09-05 15:17:44,493 [INFO] unparseable dates in 'SaleDate ' = 329
+2026-09-05 15:17:44,493 [INFO] negative values in ' Quantity' = 35
+2026-09-05 15:17:44,494 [INFO] blank/missing SKU in ' SKU' = 24
+2026-09-05 15:17:44,497 [INFO] warehouse_id values in 'Warehouse_ID' not present in warehouses master = 27
+2026-09-05 15:17:44,497 [INFO] === PROFILE orders ===
+2026-09-05 15:17:44,497 [INFO] rows=767, columns=6
+2026-09-05 15:17:44,497 [INFO] columns: ['OrderID', 'Order Date', 'Sku', 'WarehouseID', 'OrderedQty', 'Status']
+2026-09-05 15:17:44,498 [INFO] dtypes:
+OrderID            str
+Order Date         str
+Sku                str
+WarehouseID        str
+OrderedQty     float64
+Status             str
+2026-09-05 15:17:44,499 [INFO] null % per column:
+OrderID        0.00
+Order Date     3.39
+Sku            0.00
+WarehouseID    0.00
+OrderedQty     1.43
+Status         0.00
+2026-09-05 15:17:44,500 [INFO] exact duplicate rows = 7
+2026-09-05 15:17:44,500 [INFO] duplicate values in key column 'OrderID' = 7
+2026-09-05 15:17:44,502 [INFO] unparseable dates in 'Order Date' = 95
+2026-09-05 15:17:44,502 [INFO] negative values in 'OrderedQty' = 20
+2026-09-05 15:17:44,502 [INFO] blank/missing SKU in 'Sku' = 0
+2026-09-05 15:17:44,504 [INFO] warehouse_id values in 'WarehouseID' not present in warehouses master = 14
+2026-09-05 15:17:44,504 [INFO] === PROFILE inventory ===
+2026-09-05 15:17:44,504 [INFO] rows=3470, columns=4
+2026-09-05 15:17:44,504 [INFO] columns: ['SnapshotDate', 'SKU', 'WarehouseID', 'OnHandQty']
+2026-09-05 15:17:44,505 [INFO] dtypes:
+SnapshotDate      str
+SKU               str
+WarehouseID       str
+OnHandQty       int64
+2026-09-05 15:17:44,506 [INFO] null % per column:
+SnapshotDate    3.23
+SKU             0.00
+WarehouseID     0.00
+OnHandQty       0.00
+2026-09-05 15:17:44,508 [INFO] exact duplicate rows = 25
+2026-09-05 15:17:44,509 [INFO] unparseable dates in 'SnapshotDate' = 355
+2026-09-05 15:17:44,510 [INFO] negative values in 'OnHandQty' = 118
+2026-09-05 15:17:44,511 [INFO] blank/missing SKU in 'SKU' = 0
+2026-09-05 15:17:44,514 [INFO] warehouse_id values in 'WarehouseID' not present in warehouses master = 69
+2026-09-05 15:17:44,517 [INFO] 'warehouses': dropped 0 exact duplicate rows
+2026-09-05 15:17:44,527 [WARNING] 'sales': quarantined 27 rows with warehouse_id not in warehouses master (R2) -> data/processed/quarantine_sales_bad_warehouse_id.csv
+2026-09-05 15:17:44,530 [INFO] validate sales: missing_sku=24, missing_date=326, missing_qty=35, negative_qty=35
+2026-09-05 15:17:44,533 [INFO] 'sales': 401 rows dropped by validation rules (R1/R3/R4/R5)
+2026-09-05 15:17:44,535 [INFO] 'sales': dropped 22 exact duplicate rows
+2026-09-05 15:17:44,541 [WARNING] 'orders': quarantined 14 rows with warehouse_id not in warehouses master (R2) -> data/processed/quarantine_orders_bad_warehouse_id.csv
+2026-09-05 15:17:44,545 [INFO] 'orders': 114 rows dropped by validation rules (R1/R3/R4/R7)
+2026-09-05 15:17:44,546 [INFO] 'orders': dropped 6 exact duplicate rows
+2026-09-05 15:17:44,554 [WARNING] 'inventory': quarantined 69 rows with warehouse_id not in warehouses master (R2) -> data/processed/quarantine_inventory_bad_warehouse_id.csv
+2026-09-05 15:17:44,558 [INFO] 'inventory': 448 rows dropped by validation rules (102 were negative on_hand_qty)
+2026-09-05 15:17:44,561 [INFO] 'inventory': dropped 20 exact duplicate rows
+2026-09-05 15:17:44,564 [INFO] clean row counts: {'warehouses': 8, 'sales': 1427, 'orders': 633, 'inventory': 2933}
+2026-09-05 15:17:44,607 [INFO] MERGE analytic<-inventory: before=360, after=360, unmatched=0
+2026-09-05 15:17:44,614 [INFO] MERGE analytic<-sales: before=360, after=360, unmatched=47
+2026-09-05 15:17:44,620 [INFO] MERGE analytic<-orders: before=360, after=360, unmatched=214
+2026-09-05 15:17:44,627 [INFO] MERGE analytic<-warehouses: before=360, after=360, unmatched=0
+2026-09-05 15:17:44,628 [INFO] analytic view: 360 sku/warehouse rows, 0 with no matching warehouse master record
+2026-09-05 15:17:44,630 [INFO] FLAG flag_stockout_risk: 1 sku/warehouse rows (0.3%)
+2026-09-05 15:17:44,630 [INFO] FLAG flag_excess_inventory: 133 sku/warehouse rows (36.9%)
+2026-09-05 15:17:44,630 [INFO] FLAG flag_order_backlog: 23 sku/warehouse rows (6.4%)
+2026-09-05 15:17:44,630 [INFO] FLAG flag_dead_stock: 47 sku/warehouse rows (13.1%)
+2026-09-05 15:17:44,645 [INFO] LOAD dim_warehouses: dataframe_rows=8, sqlite_rows=8, match=True
+2026-09-05 15:17:44,657 [INFO] LOAD fact_sales: dataframe_rows=1427, sqlite_rows=1427, match=True
+2026-09-05 15:17:44,664 [INFO] LOAD fact_orders: dataframe_rows=633, sqlite_rows=633, match=True
+2026-09-05 15:17:44,681 [INFO] LOAD fact_inventory: dataframe_rows=2933, sqlite_rows=2933, match=True
+2026-09-05 15:17:44,689 [INFO] LOAD analytic_sku_warehouse: dataframe_rows=360, sqlite_rows=360, match=True
+2026-09-05 15:17:44,690 [INFO] LOAD quality check: fact_sales rows with warehouse_id missing from dim_warehouses = 0
+2026-09-05 15:17:44,691 [INFO] LOAD quality check: SELECT COUNT(*) across fact tables = 4993
+2026-09-05 15:17:44,691 [INFO] Database written to /root/fmcg-inventory-etl/database/inventory.db
+2026-09-05 15:17:45,136 [INFO] Saved 3 figures to figures/
+2026-09-05 15:17:45,137 [INFO] Quality summary written to /root/fmcg-inventory-etl/reports/quality_summary.json
+2026-09-05 15:17:45,137 [INFO] === PIPELINE END: SUCCESS ===
