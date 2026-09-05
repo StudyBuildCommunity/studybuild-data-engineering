@@ -1,0 +1,40 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Environment files
+.env
+
+# Generated data
+data/processed/*
+!data/processed/.gitkeep
+
+# Database
+database/*.db
+database/*.sqlite
+database/*.sqlite3
+
+# Raw source datasets
+data/raw/*.xlsx
+data/raw/*.xls
+
+# Logs
+logs/*
+!logs/.gitkeep
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
