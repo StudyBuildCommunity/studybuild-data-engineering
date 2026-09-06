@@ -1,0 +1,15 @@
+file,rule_id,count,percentage
+inventory,R2,200,13.71
+inventory,R3,173,11.86
+inventory,R4,973,66.69
+inventory,R5,113,7.75
+orders,R1,13,0.87
+orders,R2,226,15.11
+orders,R3,182,12.17
+orders,R4,887,59.29
+orders,R5,188,12.57
+sales,R1,12,0.91
+sales,R2,246,18.69
+sales,R3,154,11.7
+sales,R4,720,54.71
+sales,R5,184,13.98
