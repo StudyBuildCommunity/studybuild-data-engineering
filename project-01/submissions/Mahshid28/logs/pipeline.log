@@ -1,0 +1,384 @@
+2026-09-06 06:11:51,796 - INFO - Successfully imported functions from extract.ipynb
+2026-09-06 06:11:52,454 - INFO - Successfully imported functions from transform.ipynb
+2026-09-06 06:11:53,188 - INFO - Successfully imported functions from validate.ipynb
+2026-09-06 06:11:53,846 - INFO - Successfully imported functions from integrate.ipynb
+2026-09-06 06:11:54,610 - INFO - Successfully imported functions from analytics.ipynb
+2026-09-06 06:11:54,784 - INFO - ============================================================
+2026-09-06 06:11:54,787 - INFO - STARTING ETL PIPELINE
+2026-09-06 06:11:54,790 - INFO - Execution started at: 2026-09-06 06:11:54.790787
+2026-09-06 06:11:54,794 - INFO - ============================================================
+2026-09-06 06:11:54,796 - INFO - 
+[STEP 1] Loading raw files...
+2026-09-06 06:11:54,797 - INFO - Loading raw files from: C:\Users\WelCome\Documents\studybuild\fmcg-inventory-etl\data\raw
+2026-09-06 06:11:54,813 - INFO -   - Loaded sales: 1812 rows, 6 columns
+2026-09-06 06:11:54,831 - INFO -   - Loaded orders: 2213 rows, 6 columns
+2026-09-06 06:11:54,847 - INFO -   - Loaded inventory: 2500 rows, 4 columns
+2026-09-06 06:11:54,857 - INFO -   - Loaded warehouses: 8 rows, 4 columns
+2026-09-06 06:11:54,861 - INFO - Loaded 4 files: ['sales', 'orders', 'inventory', 'warehouses']
+2026-09-06 06:11:54,863 - INFO - 
+[STEP 2] Validating raw data...
+2026-09-06 06:11:54,868 - INFO - ============================================================
+2026-09-06 06:11:54,870 - INFO - VALIDATING ALL FILES
+2026-09-06 06:11:54,875 - INFO - ============================================================
+2026-09-06 06:11:54,878 - INFO - 
+Validating sales...
+2026-09-06 06:11:55,447 - INFO -   Found 1316 violations:
+2026-09-06 06:11:55,450 - INFO -     Rule R4: 720 violations
+2026-09-06 06:11:55,453 - INFO -       Sample values: ['SKU-0048', 'SKU-0000', 'SKU-0059']
+2026-09-06 06:11:55,455 - INFO -     Rule R2: 246 violations
+2026-09-06 06:11:55,459 - INFO -       Sample values: ['%Y/%m/%d %H:%M', '%d/%m/%Y', '2026-13-45']
+2026-09-06 06:11:55,461 - INFO -     Rule R5: 184 violations
+2026-09-06 06:11:55,466 - INFO -       Sample values: [np.int64(-2), np.int64(-11), np.int64(-2)]
+2026-09-06 06:11:55,470 - INFO -     Rule R3: 154 violations
+2026-09-06 06:11:55,473 - INFO -       Sample values: ['WH-999', '  WH-005  ', 'WC-001']
+2026-09-06 06:11:55,476 - INFO -     Rule R1: 12 violations
+2026-09-06 06:11:55,482 - INFO -       Sample values: ['TXN-000807', 'TXN-000107', 'TXN-001027']
+2026-09-06 06:11:55,484 - INFO - 
+Validating orders...
+2026-09-06 06:11:55,915 - INFO -   Found 1496 violations:
+2026-09-06 06:11:55,918 - INFO -     Rule R4: 887 violations
+2026-09-06 06:11:55,922 - INFO -       Sample values: ['SKU-0051', 'SKU-0047', 'SKU-0048']
+2026-09-06 06:11:55,924 - INFO -     Rule R2: 226 violations
+2026-09-06 06:11:55,927 - INFO -       Sample values: ['%d/%m/%Y', '%d/%m/%Y', '31/31/2026']
+2026-09-06 06:11:55,929 - INFO -     Rule R5: 188 violations
+2026-09-06 06:11:55,931 - INFO -       Sample values: [np.int64(-3), np.int64(-3), np.int64(-8)]
+2026-09-06 06:11:55,934 - INFO -     Rule R3: 182 violations
+2026-09-06 06:11:55,938 - INFO -       Sample values: ['WC-001', 'WH-999', 'WC-001']
+2026-09-06 06:11:55,940 - INFO -     Rule R1: 13 violations
+2026-09-06 06:11:55,944 - INFO -       Sample values: ['ORD-0001682', 'ORD-0001725', 'ORD-0000562']
+2026-09-06 06:11:55,946 - INFO - 
+Validating inventory...
+2026-09-06 06:11:56,585 - INFO -   Found 1459 violations:
+2026-09-06 06:11:56,591 - INFO -     Rule R4: 973 violations
+2026-09-06 06:11:56,594 - INFO -       Sample values: ['SKU-0049', 'SKU-0057', 'SKU-0049']
+2026-09-06 06:11:56,596 - INFO -     Rule R2: 200 violations
+2026-09-06 06:11:56,599 - INFO -       Sample values: ['2026-13-45', '%Y/%m/%d %H:%M', '%Y-%m-%d']
+2026-09-06 06:11:56,601 - INFO -     Rule R3: 173 violations
+2026-09-06 06:11:56,604 - INFO -       Sample values: ['WC-001', nan, 'WC-001']
+2026-09-06 06:11:56,605 - INFO -     Rule R5: 113 violations
+2026-09-06 06:11:56,608 - INFO -       Sample values: [np.int64(-3), np.int64(-130), np.int64(-118)]
+2026-09-06 06:11:56,610 - WARNING - No validation config for warehouses, skipping...
+2026-09-06 06:11:56,613 - INFO - 
+============================================================
+2026-09-06 06:11:56,614 - INFO - VALIDATION SUMMARY
+2026-09-06 06:11:56,616 - INFO - ============================================================
+2026-09-06 06:11:56,629 - INFO - 
+     file  total_rows  violations  clean_rows
+    sales        1812        1316         496
+   orders        2213        1496         717
+inventory        2500        1459        1041
+2026-09-06 06:11:56,676 - INFO - Validation report saved to C:\Users\WelCome\Documents\studybuild\fmcg-inventory-etl\data\processed\validation_reports
+2026-09-06 06:11:56,685 - INFO - 
+[STEP 3] Cleaning raw files...
+2026-09-06 06:11:56,689 - INFO - Cleaning sales data - initial rows: 1812
+2026-09-06 06:11:56,765 - INFO - Cleaned sales data - final rows: 1800
+2026-09-06 06:11:56,767 - INFO - Cleaning orders data - initial rows: 2213
+2026-09-06 06:11:56,862 - INFO - Cleaned orders data - final rows: 2200
+2026-09-06 06:11:56,864 - INFO - Cleaning inventory data - initial rows: 2500
+2026-09-06 06:11:56,902 - INFO - Cleaned inventory data - final rows: 2425
+2026-09-06 06:11:56,904 - INFO - Cleaning warehouses data - initial rows: 8
+2026-09-06 06:11:56,918 - INFO - Cleaned warehouses data - final rows: 8
+2026-09-06 06:11:56,920 - INFO - 
+[STEP 4] Saving cleaned files...
+2026-09-06 06:11:56,933 - INFO -   - Saved sales to C:\Users\WelCome\Documents\studybuild\fmcg-inventory-etl\data\processed\sales_cleaned.csv
+2026-09-06 06:11:56,948 - INFO -   - Saved orders to C:\Users\WelCome\Documents\studybuild\fmcg-inventory-etl\data\processed\orders_cleaned.csv
+2026-09-06 06:11:56,961 - INFO -   - Saved inventory to C:\Users\WelCome\Documents\studybuild\fmcg-inventory-etl\data\processed\inventory_cleaned.csv
+2026-09-06 06:11:56,967 - INFO -   - Saved warehouses to C:\Users\WelCome\Documents\studybuild\fmcg-inventory-etl\data\processed\warehouses_cleaned.csv
+2026-09-06 06:11:56,969 - INFO - 
+[STEP 5] Integrating data (Q4)...
+2026-09-06 06:11:56,972 - INFO - ============================================================
+2026-09-06 06:11:56,974 - INFO - STARTING DATA INTEGRATION PIPELINE (Q4)
+2026-09-06 06:11:56,976 - INFO - ============================================================
+2026-09-06 06:11:56,978 - INFO - Loading cleaned data from: C:\Users\WelCome\Documents\studybuild\fmcg-inventory-etl\data\processed
+2026-09-06 06:11:57,022 - INFO -   - Loaded sales: 1800 rows
+2026-09-06 06:11:57,060 - INFO -   - Loaded orders: 2200 rows
+2026-09-06 06:11:57,097 - INFO -   - Loaded inventory: 2425 rows
+2026-09-06 06:11:57,110 - INFO -   - Loaded warehouses: 8 rows
+2026-09-06 06:11:57,116 - INFO - 
+============================================================
+2026-09-06 06:11:57,118 - INFO - INTEGRATING SALES & ORDERS
+2026-09-06 06:11:57,122 - INFO - ============================================================
+2026-09-06 06:11:57,165 - INFO - 
+  Join Statistics (outer join):
+2026-09-06 06:11:57,167 - INFO -     Left: 1800 rows, Right: 2200 rows
+2026-09-06 06:11:57,169 - INFO -     Joined: 22888 rows
+2026-09-06 06:11:57,171 - INFO -     Matched keys: 511
+2026-09-06 06:11:57,173 - INFO -     Unmatched in left: 53
+2026-09-06 06:11:57,175 - INFO -     Unmatched in right: 71
+2026-09-06 06:11:57,176 - INFO -     Unmatched left examples: ['sku0053_wh0', 'sku0055_wc001', 'sku0058_wh999']
+2026-09-06 06:11:57,179 - INFO -     Unmatched right examples: ['sku0052_wh004', 'sku0051_wc001', 'sku0043_wc001']
+2026-09-06 06:11:57,183 - INFO - 
+  ✅ Sales-Orders integration complete: 22888 rows
+2026-09-06 06:11:57,184 - INFO -   Columns after integration: ['transaction_id', 'date_sales', 'sku_sales', 'warehouse_id_sales', 'sales_quantity', 'revenue', 'order_id', 'date_orders', 'sku_orders', 'warehouse_id_orders', 'ordered_quantity', 'order_status']
+2026-09-06 06:11:57,187 - INFO - 
+============================================================
+2026-09-06 06:11:57,191 - INFO - INTEGRATING INVENTORY
+2026-09-06 06:11:57,198 - INFO - ============================================================
+2026-09-06 06:11:57,204 - INFO -   Using columns: sku='sku_orders', warehouse_id='warehouse_id_orders'
+2026-09-06 06:11:57,939 - INFO - 
+  Join Statistics (left join):
+2026-09-06 06:11:57,942 - INFO -     Left: 22888 rows, Right: 2425 rows
+2026-09-06 06:11:57,944 - INFO -     Joined: 2554398 rows
+2026-09-06 06:11:57,945 - INFO -     Matched keys: 529
+2026-09-06 06:11:57,946 - INFO -     Unmatched in left: 53
+2026-09-06 06:11:57,948 - INFO -     Unmatched in right: 87
+2026-09-06 06:11:57,949 - INFO -     Unmatched left examples: ['sku0002_wh0', 'sku0037_wh007', 'sku0051_wc001']
+2026-09-06 06:11:57,951 - INFO -     Unmatched right examples: ['sku0000_wc001', 'sku0045_wh999', 'sku0013_wh999']
+2026-09-06 06:11:57,964 - INFO - 
+  ✅ Inventory integration complete: 2554398 rows
+2026-09-06 06:11:57,969 - INFO -   Columns after integration: ['transaction_id', 'date_sales', 'sku_sales', 'warehouse_id_sales', 'sales_quantity', 'revenue', 'order_id', 'date_orders', 'sku_orders', 'warehouse_id_orders', 'ordered_quantity', 'order_status', 'snapshot_date', 'sku', 'warehouse_id', 'on_hand_qty']
+2026-09-06 06:11:57,973 - INFO - 
+============================================================
+2026-09-06 06:11:57,975 - INFO - INTEGRATING WAREHOUSES MASTER
+2026-09-06 06:11:57,977 - INFO - ============================================================
+2026-09-06 06:11:58,331 - INFO -   Using warehouse_id column: 'warehouse_id_sales'
+2026-09-06 06:11:59,999 - INFO - 
+  Join Statistics (left join):
+2026-09-06 06:12:00,002 - INFO -     Left: 2554398 rows, Right: 8 rows
+2026-09-06 06:12:00,003 - INFO -     Joined: 2554398 rows
+2026-09-06 06:12:00,005 - INFO -     Matched keys: 8
+2026-09-06 06:12:00,009 - INFO -     Unmatched in left: 3
+2026-09-06 06:12:00,011 - INFO -     Unmatched in right: 0
+2026-09-06 06:12:00,013 - INFO -     Unmatched left examples: ['wh0', 'wh999', 'wc001']
+2026-09-06 06:12:00,015 - INFO - 
+  ✅ Warehouse master integration complete: 2554398 rows
+2026-09-06 06:12:00,016 - INFO -   Columns after integration: ['transaction_id', 'date_sales', 'sku_sales', 'warehouse_id_sales', 'sales_quantity', 'revenue', 'order_id', 'date_orders', 'sku_orders', 'warehouse_id_orders', 'ordered_quantity', 'order_status', 'snapshot_date', 'sku', 'warehouse_id', 'on_hand_qty', 'warehouse_id_wh', 'warehouse_name', 'city', 'region']
+2026-09-06 06:12:00,335 - INFO - 
+============================================================
+2026-09-06 06:12:00,338 - INFO - INTEGRATION SUMMARY
+2026-09-06 06:12:00,339 - INFO - ============================================================
+2026-09-06 06:12:00,341 - INFO - Source rows:
+2026-09-06 06:12:00,343 - INFO -   Sales: 1800
+2026-09-06 06:12:00,343 - INFO -   Orders: 2200
+2026-09-06 06:12:00,345 - INFO -   Inventory: 2425
+2026-09-06 06:12:00,349 - INFO -   Warehouses: 8
+2026-09-06 06:12:00,350 - INFO - 
+Final integrated dataset: 2554398 rows, 14 columns
+2026-09-06 06:12:00,353 - INFO - 
+[STEP 6] Analyzing unmatched keys...
+2026-09-06 06:12:00,380 - INFO - 
+============================================================
+2026-09-06 06:12:00,382 - INFO - UNMATCHED KEY ANALYSIS
+2026-09-06 06:12:00,384 - INFO - ============================================================
+2026-09-06 06:12:00,387 - INFO -   Using columns: sku='sku', inventory='on_hand_quantity'
+2026-09-06 06:12:00,759 - INFO - ⚠️  885990 rows have no warehouse information
+2026-09-06 06:12:00,796 - INFO -    SKUs affected: ['sku0000', 'sku0001', nan, 'sku0002', 'sku0003']...
+2026-09-06 06:12:00,844 - INFO - ⚠️  150 rows have no inventory data
+2026-09-06 06:12:00,865 - INFO - ℹ️  390 rows have orders but no sales
+2026-09-06 06:12:00,890 - INFO - ℹ️  14744 rows have sales but no orders
+2026-09-06 06:12:00,970 - INFO -   - Saved unmatched keys analysis to C:\Users\WelCome\Documents\studybuild\fmcg-inventory-etl\data\processed\integrated\unmatched_keys_analysis.csv
+2026-09-06 06:12:00,972 - INFO - 
+[STEP 7] Saving integrated data...
+2026-09-06 06:12:00,974 - INFO - 
+============================================================
+2026-09-06 06:12:00,975 - INFO - SAVING INTEGRATED DATA
+2026-09-06 06:12:00,977 - INFO - ============================================================
+2026-09-06 06:12:23,897 - INFO -   ✅ Saved integrated data: C:\Users\WelCome\Documents\studybuild\fmcg-inventory-etl\data\processed\integrated\master_integrated_data.csv
+2026-09-06 06:12:23,901 - INFO -   ✅ Saved integration summary: C:\Users\WelCome\Documents\studybuild\fmcg-inventory-etl\data\processed\integrated\integration_summary.json
+2026-09-06 06:12:27,565 - INFO -   ✅ Saved column descriptions: C:\Users\WelCome\Documents\studybuild\fmcg-inventory-etl\data\processed\integrated\column_descriptions.csv
+2026-09-06 06:12:27,567 - INFO - 
+[STEP 8] Generating final summary...
+2026-09-06 06:12:27,568 - INFO - 
+[STEP 9] Creating single trusted inventory view (Q5)...
+2026-09-06 06:12:27,570 - INFO - ============================================================
+2026-09-06 06:12:27,571 - INFO - STARTING Q5 - SINGLE TRUSTED INVENTORY VIEW
+2026-09-06 06:12:27,573 - INFO - ============================================================
+2026-09-06 06:12:27,574 - INFO - Loading integrated data from: C:\Users\WelCome\Documents\studybuild\fmcg-inventory-etl\data\processed\integrated
+2026-09-06 06:12:35,125 - INFO -   - Loaded integrated data: 2554398 rows, 14 columns
+2026-09-06 06:12:35,127 - INFO - 
+============================================================
+2026-09-06 06:12:35,128 - INFO - CREATING INVENTORY VIEW (Q5)
+2026-09-06 06:12:35,130 - INFO - ============================================================
+2026-09-06 06:12:35,425 - INFO -   Using columns:
+2026-09-06 06:12:35,428 - INFO -     Date: snapshot_date
+2026-09-06 06:12:35,429 - INFO -     Sales Qty: sales_quantity
+2026-09-06 06:12:35,430 - INFO -     Orders Qty: ordered_quantity
+2026-09-06 06:12:35,433 - INFO -     Inventory: on_hand_quantity
+2026-09-06 06:12:35,435 - INFO -     Revenue: revenue
+2026-09-06 06:12:36,057 - INFO -   Aggregating by: sku + warehouse_id
+2026-09-06 06:12:43,509 - INFO - 
+  ✅ Inventory view created:
+2026-09-06 06:12:43,511 - INFO -     Rows: 564
+2026-09-06 06:12:43,513 - INFO -     Columns: 24
+2026-09-06 06:12:43,514 - INFO -     Total Inventory: 79,949,213
+2026-09-06 06:12:43,516 - INFO -     Total Sales (30 days): 247,305
+2026-09-06 06:12:43,518 - INFO -     Out of Stock SKUs: 0
+2026-09-06 06:12:43,520 - INFO -     Overstocked SKUs: 250
+2026-09-06 06:12:43,523 - INFO -     Slow Movers: 0
+2026-09-06 06:12:43,653 - INFO - 
+============================================================
+2026-09-06 06:12:43,655 - INFO - CREATING WAREHOUSE SUMMARY
+2026-09-06 06:12:43,657 - INFO - ============================================================
+2026-09-06 06:12:43,669 - INFO -   ✅ Warehouse summary created: 11 rows
+2026-09-06 06:12:43,672 - INFO - 
+============================================================
+2026-09-06 06:12:43,673 - INFO - CREATING SKU PERFORMANCE SUMMARY
+2026-09-06 06:12:43,675 - INFO - ============================================================
+2026-09-06 06:12:43,684 - INFO -   ✅ SKU summary created: 64 rows
+2026-09-06 06:12:43,687 - INFO - 
+============================================================
+2026-09-06 06:12:43,689 - INFO - PREPARING VISUALIZATION DATA
+2026-09-06 06:12:43,691 - INFO - ============================================================
+2026-09-06 06:12:43,699 - INFO -   - Top 20 SKUs by sales
+2026-09-06 06:12:43,703 - INFO -   - Warehouse inventory distribution
+2026-09-06 06:12:43,707 - INFO -   - Inventory health summary
+2026-09-06 06:12:43,720 - INFO -   - Pareto analysis: 148 SKUs (26.2%) account for 80% of sales
+2026-09-06 06:12:43,722 - INFO -   - Pareto analysis prepared
+2026-09-06 06:12:43,724 - INFO - 
+============================================================
+2026-09-06 06:12:43,726 - INFO - SAVING ANALYTICAL OUTPUTS
+2026-09-06 06:12:43,729 - INFO - ============================================================
+2026-09-06 06:12:43,748 - INFO -   ✅ Saved inventory view: C:\Users\WelCome\Documents\studybuild\fmcg-inventory-etl\data\processed\analytics\inventory_view.csv
+2026-09-06 06:12:43,754 - INFO -   ✅ Saved warehouse summary: C:\Users\WelCome\Documents\studybuild\fmcg-inventory-etl\data\processed\analytics\warehouse_summary.csv
+2026-09-06 06:12:43,762 - INFO -   ✅ Saved SKU summary: C:\Users\WelCome\Documents\studybuild\fmcg-inventory-etl\data\processed\analytics\sku_performance_summary.csv
+2026-09-06 06:12:43,772 - INFO -   ✅ Saved viz data: C:\Users\WelCome\Documents\studybuild\fmcg-inventory-etl\data\processed\analytics\viz_top_skus.csv
+2026-09-06 06:12:43,777 - INFO -   ✅ Saved viz data: C:\Users\WelCome\Documents\studybuild\fmcg-inventory-etl\data\processed\analytics\viz_warehouse_inventory.csv
+2026-09-06 06:12:43,783 - INFO -   ✅ Saved viz data: C:\Users\WelCome\Documents\studybuild\fmcg-inventory-etl\data\processed\analytics\viz_inventory_health.csv
+2026-09-06 06:12:43,793 - INFO -   ✅ Saved viz data: C:\Users\WelCome\Documents\studybuild\fmcg-inventory-etl\data\processed\analytics\viz_pareto_analysis.csv
+2026-09-06 06:12:43,798 - INFO -   ✅ Saved analytics summary: C:\Users\WelCome\Documents\studybuild\fmcg-inventory-etl\data\processed\analytics\analytics_summary.json
+2026-09-06 06:12:43,799 - INFO - 
+  ✅ All analytical outputs saved to: C:\Users\WelCome\Documents\studybuild\fmcg-inventory-etl\data\processed\analytics
+2026-09-06 06:12:43,800 - INFO - 
+============================================================
+2026-09-06 06:12:43,803 - INFO - ✅ Q5 - SINGLE TRUSTED INVENTORY VIEW COMPLETED
+2026-09-06 06:12:43,806 - INFO - ============================================================
+2026-09-06 06:12:43,924 - INFO -   ✅ Q5 analytics completed
+2026-09-06 06:12:43,927 - INFO -     Inventory view: 564 rows
+2026-09-06 06:12:43,929 - INFO - 
+[STEP 10] Generating attention alerts (Q6)...
+2026-09-06 06:12:43,931 - INFO - ============================================================
+2026-09-06 06:12:43,933 - INFO - STARTING Q6 - ATTENTION ALERTS
+2026-09-06 06:12:43,936 - INFO - ============================================================
+2026-09-06 06:12:43,939 - INFO - Loading inventory view from: C:\Users\WelCome\Documents\studybuild\fmcg-inventory-etl\data\processed\analytics
+2026-09-06 06:12:43,988 - INFO -   - Loaded inventory view: 564 rows, 24 columns
+2026-09-06 06:12:43,990 - INFO - 
+============================================================
+2026-09-06 06:12:43,991 - INFO - Q6: GENERATING ATTENTION ALERTS
+2026-09-06 06:12:43,993 - INFO - ============================================================
+2026-09-06 06:12:43,995 - INFO - 
+============================================================
+2026-09-06 06:12:43,996 - INFO - RULE 1: OUT OF STOCK WITH DEMAND
+2026-09-06 06:12:44,008 - INFO - ============================================================
+2026-09-06 06:12:44,015 - INFO -   ✅ No out-of-stock SKUs with demand found
+2026-09-06 06:12:44,017 - INFO - 
+============================================================
+2026-09-06 06:12:44,018 - INFO - RULE 2: OVERSTOCKED (> 90 days)
+2026-09-06 06:12:44,020 - INFO - ============================================================
+2026-09-06 06:12:44,030 - INFO -   ✅ Found 250 overstocked SKUs
+2026-09-06 06:12:44,034 - INFO -     Total excess inventory value: 51,473,609
+2026-09-06 06:12:44,036 - INFO -     Average days of inventory: 30070
+2026-09-06 06:12:44,038 - INFO - 
+============================================================
+2026-09-06 06:12:44,039 - INFO - RULE 3: ORDERS WITHOUT SUFFICIENT STOCK
+2026-09-06 06:12:44,041 - INFO - ============================================================
+2026-09-06 06:12:44,054 - INFO -   ✅ Found 89 SKUs with insufficient stock for orders
+2026-09-06 06:12:44,058 - INFO -     Total order backlog: 162,802
+2026-09-06 06:12:44,060 - INFO -     Total stock deficit: 86,325
+2026-09-06 06:12:44,066 - INFO - 
+============================================================
+2026-09-06 06:12:44,068 - INFO - RULE 4: SLOW MOVERS (No sales in 90 days)
+2026-09-06 06:12:44,072 - INFO - ============================================================
+2026-09-06 06:12:44,077 - INFO -   ✅ No slow-moving SKUs found
+2026-09-06 06:12:44,079 - INFO - 
+============================================================
+2026-09-06 06:12:44,081 - INFO - RULE 5: WAREHOUSE IMBALANCE
+2026-09-06 06:12:44,083 - INFO - ============================================================
+2026-09-06 06:12:44,710 - INFO -   ✅ Found 508 warehouse imbalance alerts
+2026-09-06 06:12:44,712 - INFO -     Affected SKUs: 60
+2026-09-06 06:12:44,717 - INFO -     Overstocked alerts: 108
+2026-09-06 06:12:44,719 - INFO -     Understocked alerts: 400
+2026-09-06 06:12:44,720 - INFO - 
+============================================================
+2026-09-06 06:12:44,723 - INFO - Q6: ATTENTION ALERTS SUMMARY
+2026-09-06 06:12:44,724 - INFO - ============================================================
+2026-09-06 06:12:44,725 - INFO -   Overstocked: 250 alerts
+2026-09-06 06:12:44,727 - INFO -   Orders Without Stock: 89 alerts
+2026-09-06 06:12:44,729 - INFO -   Warehouse Imbalance: 508 alerts
+2026-09-06 06:12:44,730 - INFO - 
+  ✅ Total alerts generated: 847
+2026-09-06 06:12:44,732 - INFO - 
+============================================================
+2026-09-06 06:12:44,734 - INFO - SAVING Q6 ATTENTION ALERTS
+2026-09-06 06:12:44,735 - INFO - ============================================================
+2026-09-06 06:12:44,740 - INFO -   - No alerts for out_of_stock
+2026-09-06 06:12:44,753 - INFO -   ✅ Saved overstocked: C:\Users\WelCome\Documents\studybuild\fmcg-inventory-etl\data\processed\analytics\attention_alerts\overstocked_alerts.csv
+2026-09-06 06:12:44,761 - INFO -   ✅ Saved orders_without_stock: C:\Users\WelCome\Documents\studybuild\fmcg-inventory-etl\data\processed\analytics\attention_alerts\orders_without_stock_alerts.csv
+2026-09-06 06:12:44,763 - INFO -   - No alerts for slow_movers
+2026-09-06 06:12:44,786 - INFO -   ✅ Saved warehouse_imbalance: C:\Users\WelCome\Documents\studybuild\fmcg-inventory-etl\data\processed\analytics\attention_alerts\warehouse_imbalance_alerts.csv
+2026-09-06 06:12:44,887 - INFO -   ✅ Saved combined alerts: C:\Users\WelCome\Documents\studybuild\fmcg-inventory-etl\data\processed\analytics\attention_alerts\all_alerts_combined.csv
+2026-09-06 06:12:44,896 - INFO -   ✅ Saved alerts summary: C:\Users\WelCome\Documents\studybuild\fmcg-inventory-etl\data\processed\analytics\attention_alerts\alerts_summary.json
+2026-09-06 06:12:44,898 - INFO - 
+============================================================
+2026-09-06 06:12:44,901 - INFO - ✅ Q6 - ATTENTION ALERTS COMPLETED
+2026-09-06 06:12:44,902 - INFO - ============================================================
+2026-09-06 06:12:44,905 - INFO -   ✅ Q6 analysis completed: 847 total alerts
+2026-09-06 06:12:44,907 - INFO -     overstocked: 250 alerts
+2026-09-06 06:12:44,909 - INFO -     orders_without_stock: 89 alerts
+2026-09-06 06:12:44,911 - INFO -     warehouse_imbalance: 508 alerts
+2026-09-06 06:12:44,915 - INFO -   - Summary saved to C:\Users\WelCome\Documents\studybuild\fmcg-inventory-etl\data\processed\processing_summary.json
+2026-09-06 06:12:44,916 - INFO - 
+============================================================
+2026-09-06 06:12:44,918 - INFO - ETL PIPELINE COMPLETED SUCCESSFULLY
+2026-09-06 06:12:44,920 - INFO - ============================================================
+2026-09-06 06:12:44,922 - INFO - Files processed: sales, orders, inventory, warehouses
+2026-09-06 06:12:44,924 - INFO - Total initial rows: 6533
+2026-09-06 06:12:44,925 - INFO - Total final rows: 6433
+2026-09-06 06:12:44,926 - INFO - Integrated data: 2554398 rows, 14 columns
+2026-09-06 06:12:44,927 - INFO - 
+Validation Summary:
+2026-09-06 06:12:44,930 - INFO -   sales: 1316 violations
+2026-09-06 06:12:44,932 - INFO -     Rule R4: 720
+2026-09-06 06:12:44,933 - INFO -     Rule R2: 246
+2026-09-06 06:12:44,934 - INFO -     Rule R5: 184
+2026-09-06 06:12:44,936 - INFO -     Rule R3: 154
+2026-09-06 06:12:44,937 - INFO -     Rule R1: 12
+2026-09-06 06:12:44,938 - INFO -   orders: 1496 violations
+2026-09-06 06:12:44,940 - INFO -     Rule R4: 887
+2026-09-06 06:12:44,942 - INFO -     Rule R2: 226
+2026-09-06 06:12:44,944 - INFO -     Rule R5: 188
+2026-09-06 06:12:44,946 - INFO -     Rule R3: 182
+2026-09-06 06:12:44,947 - INFO -     Rule R1: 13
+2026-09-06 06:12:44,948 - INFO -   inventory: 1459 violations
+2026-09-06 06:12:44,949 - INFO -     Rule R4: 973
+2026-09-06 06:12:44,950 - INFO -     Rule R2: 200
+2026-09-06 06:12:44,953 - INFO -     Rule R3: 173
+2026-09-06 06:12:44,954 - INFO -     Rule R5: 113
+2026-09-06 06:12:44,955 - INFO - 
+Cleaning Summary:
+2026-09-06 06:12:44,956 - INFO -   sales: 1812 -> 1800 rows (removed 12)
+2026-09-06 06:12:44,958 - INFO -   orders: 2213 -> 2200 rows (removed 13)
+2026-09-06 06:12:44,960 - INFO -   inventory: 2500 -> 2425 rows (removed 75)
+2026-09-06 06:12:44,961 - INFO -   warehouses: 8 -> 8 rows (removed 0)
+2026-09-06 06:12:44,962 - INFO - 
+Integration Summary:
+2026-09-06 06:12:44,963 - INFO -   Sales-Orders join: 22888 rows
+2026-09-06 06:12:44,965 - INFO -   Final integrated: 2554398 rows
+2026-09-06 06:12:44,966 - INFO - 
+============================================================
+2026-09-06 06:12:44,967 - INFO - Execution finished at: 2026-09-06 06:12:44.967160
+2026-09-06 06:12:44,968 - INFO - ============================================================
+2026-09-06 06:12:44,969 - INFO - 
+[STEP 11] Verifying reproducibility (Q7)...
+2026-09-06 06:12:44,969 - INFO - 
+============================================================
+2026-09-06 06:12:44,972 - INFO - Q7: VERIFYING REPRODUCIBILITY
+2026-09-06 06:12:44,973 - INFO - ============================================================
+2026-09-06 06:12:44,976 - INFO - 
+Reproducibility Checks:
+2026-09-06 06:12:44,977 - INFO -   ❌ README.md
+2026-09-06 06:12:44,978 - INFO -   ✅ requirements.txt
+2026-09-06 06:12:44,979 - INFO -   ✅ run_pipeline.py
+2026-09-06 06:12:44,980 - INFO -   ✅ src/extract.ipynb
+2026-09-06 06:12:44,982 - INFO -   ✅ src/transform.ipynb
+2026-09-06 06:12:44,983 - INFO -   ✅ src/validate.ipynb
+2026-09-06 06:12:44,984 - INFO -   ✅ src/integrate.ipynb
+2026-09-06 06:12:44,985 - INFO -   ✅ src/analytics.ipynb
+2026-09-06 06:12:44,986 - INFO -   ❌ main.ipynb
+2026-09-06 06:12:44,987 - INFO -   ✅ data/raw/
+2026-09-06 06:12:44,988 - INFO -   ✅ data/processed/
+2026-09-06 06:12:44,989 - INFO - 
+------------------------------------------------------------
+2026-09-06 06:12:44,990 - WARNING - ⚠️  Missing 2 items:
+2026-09-06 06:12:44,991 - WARNING -    - README.md
+2026-09-06 06:12:44,991 - WARNING -    - main.ipynb
+2026-09-06 06:12:44,992 - WARNING -   ⚠️  Q7: Some reproducibility checks failed

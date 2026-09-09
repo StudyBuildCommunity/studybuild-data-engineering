@@ -1,0 +1,331 @@
+{
+  "pipeline_name": "FMCG_ETL_Pipeline",
+  "execution_id": "20260906_083513",
+  "start_time": "2026-09-06T08:35:13.331620",
+  "end_time": "2026-09-06T08:35:54.678934",
+  "duration_seconds": 41.347314,
+  "status": "SUCCESS",
+  "stages": {
+    "EXTRACT": {
+      "start_time": "2026-09-06T08:35:13.365657",
+      "description": "Loading raw files from data/raw/",
+      "status": "SUCCESS",
+      "end_time": "2026-09-06T08:35:13.529977",
+      "details": {
+        "files_loaded": 4,
+        "total_rows": 6533
+      }
+    },
+    "VALIDATE": {
+      "start_time": "2026-09-06T08:35:13.547014",
+      "description": "Validating data against business rules (Q2)",
+      "status": "SUCCESS",
+      "end_time": "2026-09-06T08:35:17.214753",
+      "details": {
+        "total_violations": 4271,
+        "clean_rows": {
+          "sales": 496,
+          "orders": 717,
+          "inventory": 1041,
+          "warehouses": 8
+        }
+      }
+    },
+    "TRANSFORM": {
+      "start_time": "2026-09-06T08:35:17.246760",
+      "description": "Cleaning and standardizing data (Q3)",
+      "status": "SUCCESS",
+      "end_time": "2026-09-06T08:35:17.684764",
+      "details": {
+        "files_cleaned": 4,
+        "total_removed": 100
+      }
+    },
+    "SAVE": {
+      "start_time": "2026-09-06T08:35:17.704183",
+      "description": "Saving cleaned files to data/processed/",
+      "status": "SUCCESS",
+      "end_time": "2026-09-06T08:35:17.780448",
+      "details": {
+        "files_saved": 4,
+        "output_directory": "C:\\Users\\WelCome\\Documents\\studybuild\\Mahshid28\\data\\processed"
+      }
+    },
+    "INTEGRATE": {
+      "start_time": "2026-09-06T08:35:17.795204",
+      "description": "Integrating data sources (Q4)",
+      "status": "SUCCESS",
+      "end_time": "2026-09-06T08:35:23.335025",
+      "details": {
+        "final_rows": 2554398,
+        "final_columns": 14
+      }
+    },
+    "ANALYTICS_Q6": {
+      "start_time": "2026-09-06T08:35:23.349656",
+      "description": "Generating attention alerts (Q6)",
+      "status": "STARTED"
+    },
+    "REPRODUCIBILITY_Q7": {
+      "start_time": "2026-09-06T08:35:23.374916",
+      "description": "Verifying reproducibility (Q7)",
+      "status": "SUCCESS",
+      "end_time": "2026-09-06T08:35:23.393432",
+      "details": {
+        "reproducible": true
+      }
+    },
+    "DB_LOAD": {
+      "start_time": "2026-09-06T08:35:23.404458",
+      "description": "Loading data to SQLite database",
+      "status": "SUCCESS",
+      "end_time": "2026-09-06T08:35:54.265285",
+      "details": {
+        "db_path": "C:\\Users\\WelCome\\Documents\\studybuild\\Mahshid28\\database\\inventory.db",
+        "tables_loaded": 5,
+        "total_rows_db": 2560831
+      }
+    },
+    "DB_CREATE": {
+      "start_time": "2026-09-06T08:35:54.288762",
+      "description": "Creating SQLite database (.db)",
+      "status": "SUCCESS",
+      "end_time": "2026-09-06T08:35:54.531992",
+      "details": {
+        "db_path": "C:\\Users\\WelCome\\Documents\\studybuild\\Mahshid28\\database\\inventory.db",
+        "tables_loaded": 4
+      }
+    },
+    "QUALITY_SUMMARY": {
+      "start_time": "2026-09-06T08:35:54.548610",
+      "description": "Generating data quality summary",
+      "status": "SUCCESS",
+      "end_time": "2026-09-06T08:35:54.630351",
+      "details": {
+        "overall_score": 83.0,
+        "file_count": 4
+      }
+    },
+    "ANALYTICAL_FIGURES": {
+      "start_time": "2026-09-06T08:35:54.647614",
+      "description": "Generating analytical figures",
+      "status": "SUCCESS",
+      "end_time": "2026-09-06T08:35:54.670620",
+      "details": {
+        "figures_dir": "C:\\Users\\WelCome\\Documents\\studybuild\\Mahshid28\\data\\processed\\figures"
+      }
+    }
+  },
+  "files_read": [
+    {
+      "name": "sales",
+      "path": "C:\\Users\\WelCome\\Documents\\studybuild\\Mahshid28\\data\\raw\\sales.csv",
+      "size_bytes": 87427,
+      "size_mb": 0.08,
+      "modified_time": "2026-09-03T04:35:15.538297"
+    },
+    {
+      "name": "orders",
+      "path": "C:\\Users\\WelCome\\Documents\\studybuild\\Mahshid28\\data\\raw\\orders.csv",
+      "size_bytes": 113447,
+      "size_mb": 0.11,
+      "modified_time": "2026-09-03T04:55:28.201227"
+    },
+    {
+      "name": "inventory",
+      "path": "C:\\Users\\WelCome\\Documents\\studybuild\\Mahshid28\\data\\raw\\inventory.csv",
+      "size_bytes": 80382,
+      "size_mb": 0.08,
+      "modified_time": "2026-09-03T04:58:19.360748"
+    },
+    {
+      "name": "warehouses",
+      "path": "C:\\Users\\WelCome\\Documents\\studybuild\\Mahshid28\\data\\raw\\warehouses.csv",
+      "size_bytes": 340,
+      "size_mb": 0.0,
+      "modified_time": "2026-09-03T04:35:13.676261"
+    }
+  ],
+  "rows_processed": {
+    "EXTRACT": {
+      "sales": 1812,
+      "orders": 2213,
+      "inventory": 2500,
+      "warehouses": 8
+    }
+  },
+  "validation_results": {
+    "sales": {
+      "violations": 1316,
+      "violations_by_rule": {
+        "R4": 720,
+        "R2": 246,
+        "R5": 184,
+        "R3": 154,
+        "R1": 12
+      }
+    },
+    "orders": {
+      "violations": 1496,
+      "violations_by_rule": {
+        "R4": 887,
+        "R2": 226,
+        "R5": 188,
+        "R3": 182,
+        "R1": 13
+      }
+    },
+    "inventory": {
+      "violations": 1459,
+      "violations_by_rule": {
+        "R4": 973,
+        "R2": 200,
+        "R3": 173,
+        "R5": 113
+      }
+    },
+    "total_violations": 4271
+  },
+  "cleaning_results": {
+    "sales": {
+      "initial_rows": 1812,
+      "final_rows": 1800,
+      "removed_rows": 12,
+      "columns": 6,
+      "removed_percent": 0.6622516556291391
+    },
+    "orders": {
+      "initial_rows": 2213,
+      "final_rows": 2200,
+      "removed_rows": 13,
+      "columns": 6,
+      "removed_percent": 0.587437867148667
+    },
+    "inventory": {
+      "initial_rows": 2500,
+      "final_rows": 2425,
+      "removed_rows": 75,
+      "columns": 4,
+      "removed_percent": 3.0
+    },
+    "warehouses": {
+      "initial_rows": 8,
+      "final_rows": 8,
+      "removed_rows": 0,
+      "columns": 4,
+      "removed_percent": 0.0
+    }
+  },
+  "integration_results": {
+    "integration_date": "2026-09-06T08:35:23.261065",
+    "source_files": {
+      "sales": 1800,
+      "orders": 2200,
+      "inventory": 2425,
+      "warehouses": 8
+    },
+    "final_rows": 2554398,
+    "final_columns": 14,
+    "join_statistics": {
+      "sales_orders": {
+        "join_type": "outer",
+        "left_on": "sku_wh",
+        "right_on": "sku_wh",
+        "left_rows": 1800,
+        "right_rows": 2200,
+        "joined_rows": 22888,
+        "matched_keys": 511,
+        "unmatched_left_keys": 53,
+        "unmatched_right_keys": 71,
+        "unmatched_left_examples": [
+          "sku0012_wc001",
+          "sku0008_wh999",
+          "sku0059_wh999",
+          "sku0045_wh999",
+          "sku1001_wc001"
+        ],
+        "unmatched_right_examples": [
+          "sku0059_wh0",
+          "sku0007_wc001",
+          "sku0015_wh0",
+          "sku0001_wh999",
+          "sku0041_wh002"
+        ],
+        "row_count_delta": 20688
+      },
+      "inventory": {
+        "join_type": "left",
+        "left_on": "sku_wh",
+        "right_on": "sku_wh",
+        "left_rows": 22888,
+        "right_rows": 2425,
+        "joined_rows": 2554398,
+        "matched_keys": 529,
+        "unmatched_left_keys": 53,
+        "unmatched_right_keys": 87,
+        "unmatched_left_examples": [
+          "sku0007_wc001",
+          "sku0012_wh999",
+          "sku0056_wh999",
+          "sku0057_wh0",
+          "sku0002_wh003"
+        ],
+        "unmatched_right_examples": [
+          "unknown_wh999",
+          "sku0003_wh012",
+          "sku0011_wh0",
+          "sku0021_wh012",
+          "sku0025_wh012"
+        ],
+        "row_count_delta": 2531510
+      },
+      "warehouses": {
+        "join_type": "left",
+        "left_on": "warehouse_id_sales",
+        "right_on": "warehouse_id",
+        "left_rows": 2554398,
+        "right_rows": 8,
+        "joined_rows": 2554398,
+        "matched_keys": 8,
+        "unmatched_left_keys": 3,
+        "unmatched_right_keys": 0,
+        "unmatched_left_examples": [
+          "wh0",
+          "wh999",
+          "wc001"
+        ],
+        "unmatched_right_examples": [],
+        "row_count_delta": 0
+      }
+    },
+    "columns": [
+      "sku",
+      "warehouse_id",
+      "warehouse_name",
+      "city",
+      "region",
+      "transaction_id",
+      "order_id",
+      "sales_quantity",
+      "ordered_quantity",
+      "on_hand_quantity",
+      "revenue",
+      "order_status",
+      "snapshot_date",
+      "date"
+    ]
+  },
+  "analytics_results": {},
+  "errors": [],
+  "warnings": [],
+  "db_load_status": {
+    "db_path": "C:\\Users\\WelCome\\Documents\\studybuild\\Mahshid28\\database\\inventory.db",
+    "exists": true,
+    "tables": {
+      "sales": 1800,
+      "orders": 2200,
+      "inventory": 2425,
+      "warehouses": 8
+    }
+  }
+}

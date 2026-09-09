@@ -1,0 +1,186 @@
+2026-09-06 08:35:13 - INFO - ======================================================================
+2026-09-06 08:35:13 - INFO - AUDIT LOG - FMCG_ETL_Pipeline
+2026-09-06 08:35:13 - INFO - ======================================================================
+2026-09-06 08:35:13 - INFO - Execution ID: 20260906_083513
+2026-09-06 08:35:13 - INFO - Start Time: 2026-09-06 08:35:13
+2026-09-06 08:35:13 - INFO - ======================================================================
+2026-09-06 08:35:13 - INFO - 
+2026-09-06 08:35:13 - INFO - >>> STAGE: EXTRACT <<<
+2026-09-06 08:35:13 - INFO -     Description: Loading raw files from data/raw/
+2026-09-06 08:35:13 - INFO -     Started at: 2026-09-06 08:35:13
+2026-09-06 08:35:13 - INFO - 
+2026-09-06 08:35:13 - INFO - --- FILES READ ---
+2026-09-06 08:35:13 - INFO -   ✅ sales: sales.csv (87,427 bytes)
+2026-09-06 08:35:13 - INFO -   ✅ orders: orders.csv (113,447 bytes)
+2026-09-06 08:35:13 - INFO -   ✅ inventory: inventory.csv (80,382 bytes)
+2026-09-06 08:35:13 - INFO -   ✅ warehouses: warehouses.csv (340 bytes)
+2026-09-06 08:35:13 - INFO - 
+2026-09-06 08:35:13 - INFO - --- ROWS PROCESSED (EXTRACT) ---
+2026-09-06 08:35:13 - INFO -   sales: 1,812
+2026-09-06 08:35:13 - INFO -   orders: 2,213
+2026-09-06 08:35:13 - INFO -   inventory: 2,500
+2026-09-06 08:35:13 - INFO -   warehouses: 8
+2026-09-06 08:35:13 - INFO -     Completed: SUCCESS
+2026-09-06 08:35:13 - INFO -       files_loaded: 4
+2026-09-06 08:35:13 - INFO -       total_rows: 6533
+2026-09-06 08:35:13 - INFO - 
+2026-09-06 08:35:13 - INFO - >>> STAGE: VALIDATE <<<
+2026-09-06 08:35:13 - INFO -     Description: Validating data against business rules (Q2)
+2026-09-06 08:35:13 - INFO -     Started at: 2026-09-06 08:35:13
+2026-09-06 08:35:16 - INFO - 
+2026-09-06 08:35:16 - INFO - --- VALIDATION RESULTS ---
+2026-09-06 08:35:16 - WARNING -   ⚠️  sales: 1316 violations found
+2026-09-06 08:35:16 - INFO -       Rule R4: 720
+2026-09-06 08:35:16 - INFO -       Rule R2: 246
+2026-09-06 08:35:17 - INFO -       Rule R5: 184
+2026-09-06 08:35:17 - INFO -       Rule R3: 154
+2026-09-06 08:35:17 - INFO -       Rule R1: 12
+2026-09-06 08:35:17 - WARNING -   ⚠️  orders: 1496 violations found
+2026-09-06 08:35:17 - INFO -       Rule R4: 887
+2026-09-06 08:35:17 - INFO -       Rule R2: 226
+2026-09-06 08:35:17 - INFO -       Rule R5: 188
+2026-09-06 08:35:17 - INFO -       Rule R3: 182
+2026-09-06 08:35:17 - INFO -       Rule R1: 13
+2026-09-06 08:35:17 - WARNING -   ⚠️  inventory: 1459 violations found
+2026-09-06 08:35:17 - INFO -       Rule R4: 973
+2026-09-06 08:35:17 - INFO -       Rule R2: 200
+2026-09-06 08:35:17 - INFO -       Rule R3: 173
+2026-09-06 08:35:17 - INFO -       Rule R5: 113
+2026-09-06 08:35:17 - WARNING -   ⚠️  TOTAL: 4271 violations found
+2026-09-06 08:35:17 - INFO -     Completed: SUCCESS
+2026-09-06 08:35:17 - INFO -       total_violations: 4271
+2026-09-06 08:35:17 - INFO -       clean_rows:
+2026-09-06 08:35:17 - INFO -         sales: 496
+2026-09-06 08:35:17 - INFO -         orders: 717
+2026-09-06 08:35:17 - INFO -         inventory: 1041
+2026-09-06 08:35:17 - INFO -         warehouses: 8
+2026-09-06 08:35:17 - INFO - 
+2026-09-06 08:35:17 - INFO - >>> STAGE: TRANSFORM <<<
+2026-09-06 08:35:17 - INFO -     Description: Cleaning and standardizing data (Q3)
+2026-09-06 08:35:17 - INFO -     Started at: 2026-09-06 08:35:17
+2026-09-06 08:35:17 - INFO - 
+2026-09-06 08:35:17 - INFO - --- CLEANING RESULTS ---
+2026-09-06 08:35:17 - INFO -   sales:
+2026-09-06 08:35:17 - INFO -     Initial rows: 1,812
+2026-09-06 08:35:17 - INFO -     Final rows: 1,800
+2026-09-06 08:35:17 - INFO -     Removed: 12 (0.7%)
+2026-09-06 08:35:17 - INFO -     Columns: 6
+2026-09-06 08:35:17 - INFO -   orders:
+2026-09-06 08:35:17 - INFO -     Initial rows: 2,213
+2026-09-06 08:35:17 - INFO -     Final rows: 2,200
+2026-09-06 08:35:17 - INFO -     Removed: 13 (0.6%)
+2026-09-06 08:35:17 - INFO -     Columns: 6
+2026-09-06 08:35:17 - INFO -   inventory:
+2026-09-06 08:35:17 - INFO -     Initial rows: 2,500
+2026-09-06 08:35:17 - INFO -     Final rows: 2,425
+2026-09-06 08:35:17 - INFO -     Removed: 75 (3.0%)
+2026-09-06 08:35:17 - INFO -     Columns: 4
+2026-09-06 08:35:17 - INFO -   warehouses:
+2026-09-06 08:35:17 - INFO -     Initial rows: 8
+2026-09-06 08:35:17 - INFO -     Final rows: 8
+2026-09-06 08:35:17 - INFO -     Removed: 0 (0.0%)
+2026-09-06 08:35:17 - INFO -     Columns: 4
+2026-09-06 08:35:17 - INFO - 
+2026-09-06 08:35:17 - INFO -   TOTAL:
+2026-09-06 08:35:17 - INFO -     Initial rows: 6,533
+2026-09-06 08:35:17 - INFO -     Final rows: 6,433
+2026-09-06 08:35:17 - INFO -     Removed: 100
+2026-09-06 08:35:17 - INFO -     Completed: SUCCESS
+2026-09-06 08:35:17 - INFO -       files_cleaned: 4
+2026-09-06 08:35:17 - INFO -       total_removed: 100
+2026-09-06 08:35:17 - INFO - 
+2026-09-06 08:35:17 - INFO - >>> STAGE: SAVE <<<
+2026-09-06 08:35:17 - INFO -     Description: Saving cleaned files to data/processed/
+2026-09-06 08:35:17 - INFO -     Started at: 2026-09-06 08:35:17
+2026-09-06 08:35:17 - INFO -     Completed: SUCCESS
+2026-09-06 08:35:17 - INFO -       files_saved: 4
+2026-09-06 08:35:17 - INFO -       output_directory: C:\Users\WelCome\Documents\studybuild\Mahshid28\data\processed
+2026-09-06 08:35:17 - INFO - 
+2026-09-06 08:35:17 - INFO - >>> STAGE: INTEGRATE <<<
+2026-09-06 08:35:17 - INFO -     Description: Integrating data sources (Q4)
+2026-09-06 08:35:17 - INFO -     Started at: 2026-09-06 08:35:17
+2026-09-06 08:35:23 - INFO - 
+2026-09-06 08:35:23 - INFO - --- INTEGRATION RESULTS ---
+2026-09-06 08:35:23 - INFO -   sales: 1,800 rows
+2026-09-06 08:35:23 - INFO -   orders: 2,200 rows
+2026-09-06 08:35:23 - INFO -   inventory: 2,425 rows
+2026-09-06 08:35:23 - INFO -   warehouses: 8 rows
+2026-09-06 08:35:23 - INFO -   Final integrated: 2,554,398 rows, 14 columns
+2026-09-06 08:35:23 - INFO -   sales_orders: 22888 rows
+2026-09-06 08:35:23 - WARNING -     Unmatched in left: 53
+2026-09-06 08:35:23 - WARNING -     Unmatched in right: 71
+2026-09-06 08:35:23 - INFO -   inventory: 2554398 rows
+2026-09-06 08:35:23 - WARNING -     Unmatched in left: 53
+2026-09-06 08:35:23 - WARNING -     Unmatched in right: 87
+2026-09-06 08:35:23 - INFO -   warehouses: 2554398 rows
+2026-09-06 08:35:23 - WARNING -     Unmatched in left: 3
+2026-09-06 08:35:23 - INFO -     Completed: SUCCESS
+2026-09-06 08:35:23 - INFO -       final_rows: 2554398
+2026-09-06 08:35:23 - INFO -       final_columns: 14
+2026-09-06 08:35:23 - INFO - 
+2026-09-06 08:35:23 - INFO - >>> STAGE: ANALYTICS_Q6 <<<
+2026-09-06 08:35:23 - INFO -     Description: Generating attention alerts (Q6)
+2026-09-06 08:35:23 - INFO -     Started at: 2026-09-06 08:35:23
+2026-09-06 08:35:23 - INFO - 
+2026-09-06 08:35:23 - INFO - >>> STAGE: REPRODUCIBILITY_Q7 <<<
+2026-09-06 08:35:23 - INFO -     Description: Verifying reproducibility (Q7)
+2026-09-06 08:35:23 - INFO -     Started at: 2026-09-06 08:35:23
+2026-09-06 08:35:23 - INFO -     Completed: SUCCESS
+2026-09-06 08:35:23 - INFO -       reproducible: True
+2026-09-06 08:35:23 - INFO - 
+2026-09-06 08:35:23 - INFO - >>> STAGE: DB_LOAD <<<
+2026-09-06 08:35:23 - INFO -     Description: Loading data to SQLite database
+2026-09-06 08:35:23 - INFO -     Started at: 2026-09-06 08:35:23
+2026-09-06 08:35:23 - INFO -   ✅ Loaded sales: 1800 rows
+2026-09-06 08:35:23 - INFO -   ✅ Loaded orders: 2200 rows
+2026-09-06 08:35:23 - INFO -   ✅ Loaded inventory: 2425 rows
+2026-09-06 08:35:23 - INFO -   ✅ Loaded warehouses: 8 rows
+2026-09-06 08:35:54 - INFO -   ✅ Loaded integrated_data: 2554398 rows
+2026-09-06 08:35:54 - INFO - 
+2026-09-06 08:35:54 - INFO - --- DATABASE LOAD STATUS ---
+2026-09-06 08:35:54 - INFO -   ✅ Database: inventory.db (270,970,880 bytes)
+2026-09-06 08:35:54 - INFO -     sales: 1,800 rows
+2026-09-06 08:35:54 - INFO -     orders: 2,200 rows
+2026-09-06 08:35:54 - INFO -     inventory: 2,425 rows
+2026-09-06 08:35:54 - INFO -     warehouses: 8 rows
+2026-09-06 08:35:54 - INFO -     integrated_data: 2,554,398 rows
+2026-09-06 08:35:54 - INFO -     Completed: SUCCESS
+2026-09-06 08:35:54 - INFO -       db_path: C:\Users\WelCome\Documents\studybuild\Mahshid28\database\inventory.db
+2026-09-06 08:35:54 - INFO -       tables_loaded: 5
+2026-09-06 08:35:54 - INFO -       total_rows_db: 2560831
+2026-09-06 08:35:54 - INFO - 
+2026-09-06 08:35:54 - INFO - >>> STAGE: DB_CREATE <<<
+2026-09-06 08:35:54 - INFO -     Description: Creating SQLite database (.db)
+2026-09-06 08:35:54 - INFO -     Started at: 2026-09-06 08:35:54
+2026-09-06 08:35:54 - INFO - 
+2026-09-06 08:35:54 - INFO - --- DATABASE LOAD STATUS ---
+2026-09-06 08:35:54 - INFO -   ✅ Database: inventory.db (270,970,880 bytes)
+2026-09-06 08:35:54 - INFO -     sales: 1,800 rows
+2026-09-06 08:35:54 - INFO -     orders: 2,200 rows
+2026-09-06 08:35:54 - INFO -     inventory: 2,425 rows
+2026-09-06 08:35:54 - INFO -     warehouses: 8 rows
+2026-09-06 08:35:54 - INFO -     Completed: SUCCESS
+2026-09-06 08:35:54 - INFO -       db_path: C:\Users\WelCome\Documents\studybuild\Mahshid28\database\inventory.db
+2026-09-06 08:35:54 - INFO -       tables_loaded: 4
+2026-09-06 08:35:54 - INFO - 
+2026-09-06 08:35:54 - INFO - >>> STAGE: QUALITY_SUMMARY <<<
+2026-09-06 08:35:54 - INFO -     Description: Generating data quality summary
+2026-09-06 08:35:54 - INFO -     Started at: 2026-09-06 08:35:54
+2026-09-06 08:35:54 - INFO -     Completed: SUCCESS
+2026-09-06 08:35:54 - INFO -       overall_score: 83.0
+2026-09-06 08:35:54 - INFO -       file_count: 4
+2026-09-06 08:35:54 - INFO - 
+2026-09-06 08:35:54 - INFO - >>> STAGE: ANALYTICAL_FIGURES <<<
+2026-09-06 08:35:54 - INFO -     Description: Generating analytical figures
+2026-09-06 08:35:54 - INFO -     Started at: 2026-09-06 08:35:54
+2026-09-06 08:35:54 - INFO -     Completed: SUCCESS
+2026-09-06 08:35:54 - INFO -       figures_dir: C:\Users\WelCome\Documents\studybuild\Mahshid28\data\processed\figures
+2026-09-06 08:35:54 - INFO - 
+2026-09-06 08:35:54 - INFO - ======================================================================
+2026-09-06 08:35:54 - INFO - AUDIT LOG - FINISHED
+2026-09-06 08:35:54 - INFO - ======================================================================
+2026-09-06 08:35:54 - INFO - Status: SUCCESS
+2026-09-06 08:35:54 - INFO - End Time: 2026-09-06 08:35:54
+2026-09-06 08:35:54 - INFO - Duration: 41.35 seconds
+2026-09-06 08:35:54 - INFO - ======================================================================
+2026-09-06 08:35:54 - INFO - Audit data saved to: C:\Users\WelCome\Documents\studybuild\Mahshid28\logs\audit_20260906_083513.json

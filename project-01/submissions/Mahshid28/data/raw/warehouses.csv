@@ -1,0 +1,9 @@
+warehouse_id,name,city,region
+WH-001,Warehouse Gamma 1,Tehran,North
+WH-002,Warehouse Alpha 2,Isfahan,South
+WH-003,Warehouse Beta 3,Shiraz,Center
+WH-004,Warehouse Gamma 4,Tabriz,East
+WH-005,Warehouse Beta 5,Mashhad,West
+WH-006,Warehouse Delta 6,Ahvaz,North
+WH-007,Warehouse Delta 7,Karaj,Center
+WH-008,Warehouse Delta 8,Rasht,North

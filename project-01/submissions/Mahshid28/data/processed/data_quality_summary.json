@@ -1,0 +1,103 @@
+{
+  "generated_at": "2026-09-06T08:56:59.291443",
+  "overall_quality_score": 83.0,
+  "file_quality": {
+    "sales": {
+      "completeness": {
+        "missing_before": 188,
+        "missing_after": 97,
+        "improvement": "48.4%"
+      },
+      "duplicates": {
+        "duplicates_before": 12,
+        "duplicates_after": 0,
+        "removed": 12
+      },
+      "validation": {
+        "violations": 1316,
+        "violation_rate": "72.6%"
+      },
+      "row_count": {
+        "initial": 1812,
+        "final": 1800,
+        "removed": 12
+      },
+      "score": 75.0
+    },
+    "orders": {
+      "completeness": {
+        "missing_before": 145,
+        "missing_after": 17,
+        "improvement": "88.3%"
+      },
+      "duplicates": {
+        "duplicates_before": 13,
+        "duplicates_after": 0,
+        "removed": 13
+      },
+      "validation": {
+        "violations": 1496,
+        "violation_rate": "67.6%"
+      },
+      "row_count": {
+        "initial": 2213,
+        "final": 2200,
+        "removed": 13
+      },
+      "score": 76.9
+    },
+    "inventory": {
+      "completeness": {
+        "missing_before": 136,
+        "missing_after": 177,
+        "improvement": "-30.1%"
+      },
+      "duplicates": {
+        "duplicates_before": 0,
+        "duplicates_after": 0,
+        "removed": 0
+      },
+      "validation": {
+        "violations": 1459,
+        "violation_rate": "58.4%"
+      },
+      "row_count": {
+        "initial": 2500,
+        "final": 2425,
+        "removed": 75
+      },
+      "score": 80.1
+    },
+    "warehouses": {
+      "completeness": {
+        "missing_before": 0,
+        "missing_after": 0,
+        "improvement": "0.0%"
+      },
+      "duplicates": {
+        "duplicates_before": 0,
+        "duplicates_after": 0,
+        "removed": 0
+      },
+      "validation": {
+        "violations": 0,
+        "violation_rate": "0.0%"
+      },
+      "row_count": {
+        "initial": 8,
+        "final": 8,
+        "removed": 0
+      },
+      "score": 100.0
+    }
+  },
+  "data_integrity": {},
+  "completeness": {},
+  "consistency": {},
+  "recommendations": [
+    "sales: High violation rate (1316/1812). Review data quality.",
+    "orders: High violation rate (1496/2213). Review data quality.",
+    "inventory: High violation rate (1459/2500). Review data quality.",
+    "Data quality is acceptable but can be improved. Focus on validation rules."
+  ]
+}

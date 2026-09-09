@@ -1,0 +1,169 @@
+{
+  "execution_time": "2026-09-06T08:56:19.704066",
+  "files_processed": [],
+  "total_rows_processed": 6533,
+  "validation_summary": {
+    "sales": {
+      "total_violations": 1316,
+      "rules": {
+        "R4": 720,
+        "R2": 246,
+        "R5": 184,
+        "R3": 154,
+        "R1": 12
+      }
+    },
+    "orders": {
+      "total_violations": 1496,
+      "rules": {
+        "R4": 887,
+        "R2": 226,
+        "R5": 188,
+        "R3": 182,
+        "R1": 13
+      }
+    },
+    "inventory": {
+      "total_violations": 1459,
+      "rules": {
+        "R4": 973,
+        "R2": 200,
+        "R3": 173,
+        "R5": 113
+      }
+    }
+  },
+  "cleaning_summary": {
+    "sales": {
+      "initial_rows": 1812,
+      "final_rows": 1800,
+      "removed_rows": 12,
+      "columns": 6,
+      "removed_percent": 0.6622516556291391
+    },
+    "orders": {
+      "initial_rows": 2213,
+      "final_rows": 2200,
+      "removed_rows": 13,
+      "columns": 6,
+      "removed_percent": 0.587437867148667
+    },
+    "inventory": {
+      "initial_rows": 2500,
+      "final_rows": 2425,
+      "removed_rows": 75,
+      "columns": 4,
+      "removed_percent": 3.0
+    },
+    "warehouses": {
+      "initial_rows": 8,
+      "final_rows": 8,
+      "removed_rows": 0,
+      "columns": 4,
+      "removed_percent": 0.0
+    }
+  },
+  "integration_summary": {
+    "integration_date": "2026-09-06T08:56:29.687794",
+    "source_files": {
+      "sales": 1800,
+      "orders": 2200,
+      "inventory": 2425,
+      "warehouses": 8
+    },
+    "final_rows": 2554398,
+    "final_columns": 14,
+    "join_statistics": {
+      "sales_orders": {
+        "join_type": "outer",
+        "left_on": "sku_wh",
+        "right_on": "sku_wh",
+        "left_rows": 1800,
+        "right_rows": 2200,
+        "joined_rows": 22888,
+        "matched_keys": 511,
+        "unmatched_left_keys": 53,
+        "unmatched_right_keys": 71,
+        "unmatched_left_examples": [
+          "sku0051_wh999",
+          "sku0023_wh004",
+          "sku0055_wh004",
+          "sku0040_wc001",
+          "sku0060_wh0"
+        ],
+        "unmatched_right_examples": [
+          "sku0024_wh999",
+          "sku0059_wh0",
+          "sku0017_wh0",
+          "sku0044_wh0",
+          "sku0001_wh999"
+        ],
+        "row_count_delta": 20688
+      },
+      "inventory": {
+        "join_type": "left",
+        "left_on": "sku_wh",
+        "right_on": "sku_wh",
+        "left_rows": 22888,
+        "right_rows": 2425,
+        "joined_rows": 2554398,
+        "matched_keys": 529,
+        "unmatched_left_keys": 53,
+        "unmatched_right_keys": 87,
+        "unmatched_left_examples": [
+          "sku0060_wc001",
+          "sku0050_wh004",
+          "sku0017_wh0",
+          "sku0037_wh007",
+          "sku0044_wh0"
+        ],
+        "unmatched_right_examples": [
+          "sku0051_wh999",
+          "sku0000_wh012",
+          "unknown_wh012",
+          "sku0055_wh004",
+          "sku0040_wc001"
+        ],
+        "row_count_delta": 2531510
+      },
+      "warehouses": {
+        "join_type": "left",
+        "left_on": "warehouse_id_sales",
+        "right_on": "warehouse_id",
+        "left_rows": 2554398,
+        "right_rows": 8,
+        "joined_rows": 2554398,
+        "matched_keys": 8,
+        "unmatched_left_keys": 3,
+        "unmatched_right_keys": 0,
+        "unmatched_left_examples": [
+          "wc001",
+          "wh999",
+          "wh0"
+        ],
+        "unmatched_right_examples": [],
+        "row_count_delta": 0
+      }
+    },
+    "columns": [
+      "sku",
+      "warehouse_id",
+      "warehouse_name",
+      "city",
+      "region",
+      "transaction_id",
+      "order_id",
+      "sales_quantity",
+      "ordered_quantity",
+      "on_hand_quantity",
+      "revenue",
+      "order_status",
+      "snapshot_date",
+      "date"
+    ]
+  },
+  "analytics_summary": {},
+  "q7_reproducible": true,
+  "total_files_processed": 4,
+  "total_rows_final": 6433
+}
